@@ -46,9 +46,11 @@ const artistService = {
         try{
             const artist = await artistModel.findOne({
                 where: {id: Number(id)}
-                
             });
-            return artist;
+            if(artist){
+                return artist;
+            }
+            return null;
         }
         catch(error){
             throw error;
@@ -57,7 +59,9 @@ const artistService = {
 
     delete: async(id) => {
         try{
-            const artistToDelete = await getOne(id);
+            const artistToDelete = await artistModel.findOne({
+                where: {id: Number(id)}
+            });
 
             if(artistToDelete){
                 const deletedArtist = await artistModel.destroy({
