@@ -15,7 +15,7 @@ const AlbumController = {
             return utils.send(res);
         } 
         catch (error) {
-            utils.setError(400, error);
+            utils.setError(400, error.message);
             return utils.send(res);
         }
     },
@@ -32,6 +32,7 @@ const AlbumController = {
             return utils.send(res);
         }
     }
+
     
 }
 

@@ -20,7 +20,7 @@ module.exports = {
       year: {
         type: Sequelize.INTEGER
       }
-    });
+    },);
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Albums');

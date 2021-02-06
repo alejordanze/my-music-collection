@@ -1,10 +1,12 @@
-const albumModel = require('../models/album');
+const {Album} = require('../models');
 
 const AlbumService = {
 
     findAll: async () => {
         try{
-            return await albumModel.findAll();
+            return await Album.findAll({
+                include: 'artists'
+            });
         }
         catch(error) {
             throw error;
@@ -13,7 +15,7 @@ const AlbumService = {
 
     create: async(newAlbum) => {
         try{
-            return await albumModel.create(newAlbum);
+            return await Album.create(newAlbum);
         }
         catch(error){
             throw error;
@@ -22,7 +24,7 @@ const AlbumService = {
 
     update: async (id, editedAlbum) => {
         try{
-            const albumToUpdate = await albumModel.findOne({
+            const albumToUpdate = await Album.findOne({
                 where: {id: Number(id)}
             });
 
@@ -40,8 +42,9 @@ const AlbumService = {
 
     getOne: async (id) => {
         try{
-            const album = await albumModel.findOne({
-                where: {id: Number(id)}
+            const album = await Album.findOne({
+                where: {id: Number(id)},
+                include: {all:true}
             });
 
             return album;
@@ -53,12 +56,12 @@ const AlbumService = {
 
     delete: async (id) => {
         try{
-            const albumToDelete = await albumModel.findOne({
+            const albumToDelete = await Album.findOne({
                 where: {id: Number(id)}
             });
 
             if(albumToDelete){
-                const deletedAlbum = await albumModel.destroy({
+                const deletedAlbum = await Album.destroy({
                     where: {id: Number(id)}});
 
                 return deletedAlbum;

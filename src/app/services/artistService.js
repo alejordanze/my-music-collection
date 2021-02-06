@@ -1,10 +1,13 @@
 const artistModel = require('../models/artist');
+const albumModel = require('../models/album');
 
 const artistService = {
 
     findAll: async () => {
         try{
-            return await artistModel.findAll();
+            return await artistModel.findAll({
+                include: 'albums'
+            });
         }
         catch(error){
             throw error;
@@ -43,6 +46,7 @@ const artistService = {
         try{
             const artist = await artistModel.findOne({
                 where: {id: Number(id)}
+                
             });
             return artist;
         }

@@ -2,7 +2,7 @@ const sequelize = require('../../config/sequelize-config').sequelize
 const DataTypes = require('../../config/sequelize-config').datatype
 
 const Album = sequelize.define('Album', {
-  
+
   releaseDate: {
     type: DataTypes.DATE,
     allowNull: false
@@ -19,6 +19,15 @@ const Album = sequelize.define('Album', {
     type: DataTypes.INTEGER,
     allowNull: false
   }
-});
+}, {});
+
+Album.associate = (models) => {
+  Album.belongsToMany(models.Artist, {
+    through: models.AlbumArtist,
+    as: "artists",
+    foreignKey: "albumId",
+  });
+}
+
 
 module.exports = Album;

@@ -14,6 +14,14 @@ const Artist = sequelize.define('Artist', {
     type: DataTypes.DATE,
     allowNull: false
   }
-})
+}, {});
+
+Artist.associate = (models) => {
+  Artist.belongsToMany(models.Album, {
+    through: models.AlbumArtist,
+    as: "albums",
+    foreignKey: "artistId",
+  });
+}
   
 module.exports = Artist;
