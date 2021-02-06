@@ -18,7 +18,7 @@ app.use('/api/albumArtist',albumArtistRoutes);
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Welcome to My Home Music Collection');
 })
 
 app.listen(port, () => {
