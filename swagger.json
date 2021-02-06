@@ -1,0 +1,501 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "My Home Music Collection",
+        "description": "This API allows you to add, get, delete and update albums and artists. Also allows you to add Artists to Albums.",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+
+    "tags":[
+        {
+            "name": "Albums",
+            "description": "API for Albums"
+        },
+        {
+            "name": "Artists",
+            "description": "API for Artists"
+        },
+        {
+            "name": "AlbumArtist",
+            "description": "API for add Artists to Albums"
+        }
+    ],
+
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/albums": {
+            "get": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Get all",
+                "description": "Get all Albums",
+                "responses": {
+                    "200": {
+                        "description": "Albums got",
+                        "schema": {
+                            "$ref": "#/definitions/Albums"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Add",
+                "description": "Add Album",
+                "parameters":[
+                    {
+                        "name": "album",
+                        "in": "body",
+                        "required": true,
+                        "description": "New album",
+                        "schema": {
+                            "$ref": "#/definitions/Album"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Album added",
+                        "schema": {
+                            "$ref": "#/definitions/Album"
+                        }
+                    }
+                }
+            }
+        },
+        "/albums/{id}": {
+            "get": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Get one",
+                "description": "Get one Album",
+                "parameters":[
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Album Id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Album got",
+                        "schema": {
+                            "$ref": "#/definitions/Album"
+                        }
+                    },
+                    "404": {
+                        "description": "Album ID not found",
+                        "schema": {
+                            "$ref": "#/definitions/AlbumError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Update",
+                "description": "Update Album",
+                "parameters":[
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Album Id",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "album",
+                        "in": "body",
+                        "required": true,
+                        "description": "Edited album",
+                        "schema": {
+                            "$ref": "#/definitions/Album"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Album updated",
+                        "schema": {
+                            "$ref": "#/definitions/Album"
+                        }
+                    },
+                    "404": {
+                        "description": "Album ID not found",
+                        "schema": {
+                            "$ref": "#/definitions/AlbumError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Delete",
+                "description": "Delete Album",
+                "parameters":[
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Album Id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Album deleted",
+                        "schema": {
+                            "$ref": "#/definitions/Album"
+                        }
+                    },
+                    "404": {
+                        "description": "Album ID not found",
+                        "schema": {
+                            "$ref": "#/definitions/AlbumError"
+                        }
+                    }
+                }
+            }
+        },
+        "/artists": {
+            "get": {
+                "tags": [
+                    "Artists"
+                ],
+                "summary": "Get all",
+                "description": "Get all Artists",
+                "responses": {
+                    "200": {
+                        "description": "Artists got",
+                        "schema": {
+                            "$ref": "#/definitions/Artists"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Artists"
+                ],
+                "summary": "Add",
+                "description": "Add Artist",
+                "parameters":[
+                    {
+                        "name": "artist",
+                        "in": "body",
+                        "required": true,
+                        "description": "New artist",
+                        "schema": {
+                            "$ref": "#/definitions/Artist"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Artist added",
+                        "schema": {
+                            "$ref": "#/definitions/Artist"
+                        }
+                    }
+                }
+            }
+        },
+        "/artists/{id}": {
+            "get": {
+                "tags": [
+                    "Artists"
+                ],
+                "summary": "Get one",
+                "description": "Get one Artists",
+                "parameters":[
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Artist Id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Artist got",
+                        "schema": {
+                            "$ref": "#/definitions/Album"
+                        }
+                    },
+                    "404": {
+                        "description": "Artist ID not found",
+                        "schema": {
+                            "$ref": "#/definitions/ArtistError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Artists"
+                ],
+                "summary": "Update",
+                "description": "Update Artists",
+                "parameters":[
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Artist Id",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "album",
+                        "in": "body",
+                        "required": true,
+                        "description": "Edited artist",
+                        "schema": {
+                            "$ref": "#/definitions/Artist"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Artist updated",
+                        "schema": {
+                            "$ref": "#/definitions/Artist"
+                        }
+                    },
+                    "404": {
+                        "description": "Artist ID not found",
+                        "schema": {
+                            "$ref": "#/definitions/ArtistError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Artists"
+                ],
+                "summary": "Delete",
+                "description": "Delete Artists",
+                "parameters":[
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Artist Id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Artist deleted",
+                        "schema": {
+                            "$ref": "#/definitions/Artist"
+                        }
+                    },
+                    "404": {
+                        "description": "Artist ID not found",
+                        "schema": {
+                            "$ref": "#/definitions/ArtistError"
+                        }
+                    }
+                }
+            }
+        },
+        "/albumArtist": {
+            "post": {
+                "tags": [
+                    "AlbumArtist"
+                ],
+                "summary": "Attach",
+                "description": "Add Artist to Album",
+                "parameters":[
+                    {
+                        "name": "albumId",
+                        "in": "query",
+                        "required": true,
+                        "description": "Album ID"
+                    },
+                    {
+                        "name": "artistId",
+                        "in": "query",
+                        "required": true,
+                        "description": "Artist ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/AlbumArtist"
+                        }
+                    },
+                    "404": {
+                        "description": "Album or Artist not found",
+                        "schema": {
+                            "$ref": "#/definitions/AlbumArtistMessage"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "AlbumArtist"
+                ],
+                "summary": "Remove",
+                "description": "Remove Artist from Album",
+                "parameters":[
+                    {
+                        "name": "albumId",
+                        "in": "query",
+                        "required": true,
+                        "description": "Album ID"
+                    },
+                    {
+                        "name": "artistId",
+                        "in": "query",
+                        "required": true,
+                        "description": "Artist ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Artist added to Album",
+                        "schema": {
+                            "$ref": "#/definitions/AlbumArtist"
+                        }
+                    },
+                    "404": {
+                        "description": "Album or Artist not found",
+                        "schema": {
+                            "$ref": "#/definitions/AlbumArtistMessage"
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "Album": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "autoIncrement": true,
+                    "uniqueItems": true
+                },
+                "title": {
+                    "type": "string"
+                },
+                "releaseDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "rating": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "year": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Albums":{
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Album"
+            }
+            
+        },
+        "Artist": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "autoIncrement": true,
+                    "uniqueItems": true
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "birthDate": {
+                    "type": "string",
+                    "format": "date"
+                }
+            }
+        },
+        "Artists":{
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Artist"
+            }
+        },
+        "AlbumArtist": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "autoIncrement": true,
+                    "uniqueItems": true
+                },
+                "albumId": {
+                    "type": "integer"
+                },
+                "artistId": {
+                    "type": "integer"
+                }
+            }
+        },
+        "AlbumArtistMessage": {
+            "type": "object",
+            "properties": {
+                "message":{
+                    "type": "string",
+                    "example": "Album ID or Artist ID not found"
+                }
+            }
+        },
+        "ArtistError": {
+            "type": "object",
+            "properties": {
+                "message":{
+                    "type": "string",
+                    "example": "Artist ID not found"
+                }
+            }
+        },
+        "AlbumError": {
+            "type": "object",
+            "properties": {
+                "message":{
+                    "type": "string",
+                    "example": "Album ID not found"
+                }
+            }
+        }
+    }
+}
