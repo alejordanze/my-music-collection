@@ -1,0 +1,33 @@
+{
+  "name": "music-collection",
+  "version": "1.0.0",
+  "description": "Backend service for managing my home music collection",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejordanze/my-music-collection.git"
+  },
+  "author": "Miguel Alejandro Jordan Zeballos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alejordanze/my-music-collection/issues"
+  },
+  "homepage": "https://github.com/alejordanze/my-music-collection#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

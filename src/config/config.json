@@ -1,0 +1,24 @@
+{
+    "development": {
+      "username": "miguelalejandrojordan",
+      "password": "",
+      "database": "music",
+      "host": "127.0.0.1",
+      "dialect": "postgres",
+      "define": {
+        "schema": "public",
+        "timestamps": false
+      }
+    },
+    "production": {
+      "username": "jxdocflyvrrfqo",
+      "password": "64aebdc2498da0659da5994c600474c43b17600d5630109481d2f5ebb60e518a",
+      "database": "df8c8bnmtrodkj",
+      "host": "ec2-54-88-130-244.compute-1.amazonaws.com",
+      "dialect": "postgres",
+      "define": {
+        "schema": "public",
+        "timestamps": false
+      }
+    }
+  }
