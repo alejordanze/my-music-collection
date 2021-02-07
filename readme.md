@@ -32,6 +32,9 @@ To run the tests use the following command:
 
 npm run test
 
+To see the API documentation go to:
+
+http://<your_host>/api/api-docs
 
 Possible environments:
 
