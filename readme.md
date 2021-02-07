@@ -28,8 +28,11 @@ To run in a development enviroment use the following command:
 
 npm run dev
 
+To run the tests use the following command:
+
+npm run test
+
 
 Possible environments:
 
 * development
-* production
