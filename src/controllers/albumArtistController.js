@@ -1,11 +1,9 @@
 const utils = require('../utils/utils');
 const albumArtistService = require('../app/services/albumArtistService');
-const Album = require('../app/models/album');
-const { create } = require('../app/services/albumService');
 
-const AlbumArtistController = {
+class AlbumArtistController {
 
-    addArtistToAlbum: async(req, res) => {
+    async addArtistToAlbum(req, res) {
         try{
             const artistId = req.query.artistId;
             const albumId = req.query.albumId;
@@ -22,9 +20,9 @@ const AlbumArtistController = {
             utils.setError(400, error.message);
             utils.send(res);
         }
-    },
+    }
 
-    removeArtistFromAlbum: async(req, res) => {
+    async removeArtistFromAlbum(req, res) {
         try{
             const artistId = req.query.artistId;
             const albumId = req.query.albumId;
@@ -44,4 +42,4 @@ const AlbumArtistController = {
     }
 }
 
-module.exports = AlbumArtistController;
+module.exports = new AlbumArtistController();

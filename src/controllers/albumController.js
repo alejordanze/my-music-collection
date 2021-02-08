@@ -1,9 +1,9 @@
 const albumService = require('../app/services/albumService');
 const utils = require('../utils/utils');
 
-const AlbumController = {
+class AlbumController {
 
-    findAll: async(req, res) => {
+    async findAll(req, res) {
         try{
             const albumList = await albumService.findAll();
         
@@ -18,9 +18,9 @@ const AlbumController = {
             utils.setError(400, error.message);
             return utils.send(res);
         }
-    },
+    }
 
-    getOne: async(req, res) => {
+    async getOne(req, res) {
         try{
             const albumId = req.params.id;
             const album = await albumService.getOne(albumId);
@@ -35,9 +35,9 @@ const AlbumController = {
             utils.setError(400, error.message);
             return utils.send(res);
         }
-    },
+    }
 
-    create: async(req, res) => {
+    async create(req, res) {
         const album = req.body;
         try{
             const createdAlbum = await albumService.create(album);
@@ -48,9 +48,9 @@ const AlbumController = {
             utils.setError(400, error.message);
             return utils.send(res);
         }
-    },
+    }
 
-    delete: async(req, res) => {
+    async delete(req, res) {
         const albumId = req.params.id;
         try{
             const albumDeleted = await albumService.delete(albumId);
@@ -66,9 +66,9 @@ const AlbumController = {
             utils.setError(400, error.message);
             return utils.send(res);
         }
-    },
+    }
 
-    update: async(req, res) => {
+    async update(req, res) {
         try{
             const albumId = req.params.id;
             const albumToUpdate = req.body;
@@ -87,4 +87,4 @@ const AlbumController = {
     }
 }
 
-module.exports =  AlbumController;
+module.exports = new AlbumController();

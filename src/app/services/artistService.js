@@ -1,35 +1,34 @@
-const artistModel = require('../models/artist');
-const albumModel = require('../models/album');
+const {Artist} = require('../models');
 
-const artistService = {
+class ArtistService {
 
-    findAll: async () => {
+    async findAll() {
         try{
-            return await artistModel.findAll({
+            return await Artist.findAll({
                 include: 'albums'
             });
         }
         catch(error){
             throw error;
         }
-    },
+    }
 
-    create: async (newArtist) => {
+    async create (newArtist){
         try{
-            return await artistModel.create(newArtist);
+            return await Artist.create(newArtist);
         }
         catch(error){
             throw error;
         }
-    },
+    }
 
-    update: async (id, updatedArtist) => {
+    async update(id, updatedArtist){
         try{
-            const artistToUpdate = await artistModel.findOne({
+            const artistToUpdate = await Artist.findOne({
                 where: {id: Number(id)}
             });
             if(artistToUpdate){
-                await artistModel.update(updatedArtist, {
+                await Artist.update(updatedArtist, {
                     where: {id: Number(id)}
                 })
 
@@ -40,11 +39,11 @@ const artistService = {
         catch(error){
             throw error;
         }
-    },
+    }
     
-    getOne: async(id) => {
+    async getOne(id){
         try{
-            const artist = await artistModel.findOne({
+            const artist = await Artist.findOne({
                 where: {id: Number(id)}
             });
             if(artist){
@@ -55,16 +54,16 @@ const artistService = {
         catch(error){
             throw error;
         }
-    },
+    }
 
-    delete: async(id) => {
+    async delete(id){
         try{
-            const artistToDelete = await artistModel.findOne({
+            const artistToDelete = await Artist.findOne({
                 where: {id: Number(id)}
             });
 
             if(artistToDelete){
-                const deletedArtist = await artistModel.destroy({
+                const deletedArtist = await Artist.destroy({
                     where: {id: Number(id)}
                 })
 
@@ -78,4 +77,4 @@ const artistService = {
     }
 }
 
-module.exports = artistService;
+module.exports = new ArtistService();

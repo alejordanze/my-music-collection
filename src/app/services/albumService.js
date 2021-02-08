@@ -1,8 +1,8 @@
 const {Album} = require('../models');
 
-const AlbumService = {
+class AlbumService {
 
-    findAll: async () => {
+    async findAll() {
         try{
             return await Album.findAll({
                 include: 'artists'
@@ -11,18 +11,18 @@ const AlbumService = {
         catch(error) {
             throw error;
         }
-    },
+    }
 
-    create: async(newAlbum) => {
+    async create(newAlbum) {
         try{
             return await Album.create(newAlbum);
         }
         catch(error){
             throw error;
         }
-    },
+    }
 
-    update: async (id, editedAlbum) => {
+    async update(id, editedAlbum) {
         try{
             const albumToUpdate = await Album.findOne({
                 where: {id: Number(id)}
@@ -38,9 +38,9 @@ const AlbumService = {
         catch(error){
             throw error;
         }
-    },
+    }
 
-    getOne: async (id) => {
+    async getOne(id) {
         try{
             const album = await Album.findOne({
                 where: {id: Number(id)},
@@ -52,9 +52,9 @@ const AlbumService = {
         catch(error){
             throw error;
         }
-    },
+    }
 
-    delete: async (id) => {
+    async delete(id){
         try{
             const albumToDelete = await Album.findOne({
                 where: {id: Number(id)}
@@ -74,4 +74,4 @@ const AlbumService = {
     }
 }
 
-module.exports = AlbumService;
+module.exports = new AlbumService();

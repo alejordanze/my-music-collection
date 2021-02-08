@@ -45,6 +45,7 @@ describe("Album Artist API Exists", function() {
     });
 
     it("should return 200 status code adding artist to album", function(done) {
+        console.log(`${API_URL}/albumArtist?artistId=${created.artistId}&albumId=${created.albumId}`);
         request.post(`${API_URL}/albumArtist?artistId=${created.artistId}&albumId=${created.albumId}`, function(error, response, body) {
             expect(response.statusCode).toBe(200);
             done();
@@ -52,6 +53,7 @@ describe("Album Artist API Exists", function() {
     });
 
     it("should return 200 status code removing artist to album", function(done) {
+        console.log(`${API_URL}/albumArtist?artistId=${created.artistId}&albumId=${created.albumId}`);
         request.delete(`${API_URL}/albumArtist?artistId=${created.artistId}&albumId=${created.albumId}`, function(error, response, body) {
             expect(response.statusCode).toBe(200);
             done();

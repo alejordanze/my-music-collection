@@ -1,9 +1,9 @@
 const artistService = require('../app/services/artistService');
 const utils = require('../utils/utils');
 
-const artistController = {
+class ArtistController {
 
-    findAll: async(req, res) => {
+    async findAll(req, res) {
         try{
             const artistList = await artistService.findAll();
 
@@ -18,9 +18,9 @@ const artistController = {
             utils.setError(400, error.message);
             return utils.send(res);
         }
-    },
+    }
 
-    getOne: async(req, res) => {
+    async getOne(req, res) {
         try{
             const artistId = req.params.id;
             const artist = await artistService.getOne(artistId);
@@ -35,9 +35,9 @@ const artistController = {
             utils.setError(400, error.message);
             return utils.send(res);
         }
-    },
+    }
 
-    create: async(req, res) => {
+    async create(req, res) {
         const artist = req.body;
         try{
             const createdArtist = await artistService.create(artist);
@@ -48,9 +48,9 @@ const artistController = {
             utils.setError(400, error.message);
             return utils.send(res);
         }
-    },
+    }
 
-    delete: async(req, res) => {
+    async delete(req, res) {
         try{
             const artistId = req.params.id;
             const deletedArtist = await artistService.delete(artistId);
@@ -65,9 +65,9 @@ const artistController = {
             utils.setError(400, error.message);
             return utils.send(res);
         }
-    },
+    }
 
-    update: async(req, res) => {
+    async update(req, res) {
         try{
             const artistId = req.params.id;
             const artistToUpdate = req.body;
@@ -86,4 +86,4 @@ const artistController = {
     }
 }
 
-module.exports = artistController;
+module.exports = new ArtistController();

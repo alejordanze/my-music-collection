@@ -1,15 +1,15 @@
-const albumArtistModel = require('../models/albumartist');
+const {AlbumArtist} = require('../models');
 const albumService = require('./albumService');
 const artistService = require('./artistService');
 
-const AlbumArtistService = {
-    addArtistToAlbum: async(albumId, artistId) => {
+class AlbumArtistService {
+    async addArtistToAlbum(albumId, artistId){
         try{
             const albumToAdd = await albumService.getOne(albumId);
             const artistToAdd = await artistService.getOne(artistId);
     
             if(albumToAdd && artistToAdd){
-                createdAlbumArtist = await albumArtistModel.create({albumId, artistId});
+                const createdAlbumArtist = await AlbumArtist.create({albumId, artistId});
                 return createdAlbumArtist;
             }
             return null;
@@ -17,15 +17,15 @@ const AlbumArtistService = {
         catch(error){
             throw error;
         }
-    },
+    }
 
-    removeArtistFromAlbum: async(albumId, artistId) => {
+    async removeArtistFromAlbum(albumId, artistId){
         try{
             const albumToAdd = await albumService.getOne(albumId);
             const artistToAdd = await artistService.getOne(artistId);
     
             if(albumToAdd && artistToAdd){
-                albumArtistToDelete = await albumArtistModel.destroy({
+                const albumArtistToDelete = await AlbumArtist.destroy({
                    where:{albumId: Number(albumId), artistId: Number(artistId)}
                 });
                 return albumArtistToDelete;
@@ -38,4 +38,4 @@ const AlbumArtistService = {
     }
 }
 
-module.exports = AlbumArtistService;
+module.exports = new AlbumArtistService();
