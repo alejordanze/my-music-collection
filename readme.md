@@ -1,3 +1,7 @@
+## ⚙️ Project Technologies
+
+This project was developed with NodeJs, Express, Sequelize and Postgres as DB.
+
 ## 🔌 Configurations
 
 It is needed to create the database **music** in your postgres server.
@@ -32,10 +36,10 @@ To run the tests use the following command:
 
 npm run test
 
+## 💻 API Documentation
+
 To see the API documentation go to:
 
-http://<your_host>/api/api-docs
+http://<your_host>/api-docs
 
-Possible environments:
-
-* development
+Also, there is a Postman Collection with all endpoints, in the root folder
