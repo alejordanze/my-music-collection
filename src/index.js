@@ -17,7 +17,7 @@ app.use('/api/albums', albumRoutes);
 app.use('/api/artists', artistRoutes);
 app.use('/api/albumArtist', albumArtistRoutes);
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.send('Welcome to My Home Music Collection');
 });
 
