@@ -9,16 +9,5 @@
         "schema": "public",
         "timestamps": false
       }
-    },
-    "production": {
-      "username": "cnjtkkealoerbq",
-      "password": "b4f65f87f7f7f84bfb57fa396b9df1dfb1c6ab7f3adc1127cb2646a5498f8359",
-      "database": "d4noo2b0dv44n6",
-      "host": "ec2-34-239-33-57.compute-1.amazonaws.com",
-      "dialect": "postgres",
-      "define": {
-        "schema": "public",
-        "timestamps": false
-      }
     }
   }

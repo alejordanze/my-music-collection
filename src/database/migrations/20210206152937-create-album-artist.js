@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('AlbumArtists', {
@@ -6,7 +5,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
 
       artistId: {
@@ -15,8 +14,8 @@ module.exports = {
         references: {
           model: 'Artists',
           key: 'id',
-          as: 'artistId'
-        }
+          as: 'artistId',
+        },
       },
       albumId: {
         type: Sequelize.INTEGER,
@@ -24,12 +23,12 @@ module.exports = {
         references: {
           model: 'Albums',
           key: 'id',
-          as: 'albumId'
-        }
-      }
+          as: 'albumId',
+        },
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('AlbumArtists');
-  }
+  },
 };

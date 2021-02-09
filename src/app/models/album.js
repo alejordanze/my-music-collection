@@ -1,33 +1,32 @@
-const sequelize = require('../../config/sequelize-config').sequelize
-const DataTypes = require('../../config/sequelize-config').datatype
+const { sequelize } = require('../../config/sequelize-config');
+const DataTypes = require('../../config/sequelize-config').datatype;
 
 const Album = sequelize.define('Album', {
 
   releaseDate: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
   },
   rating: {
     type: DataTypes.FLOAT,
-    allowNull: false
+    allowNull: false,
   },
   title: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   year: {
     type: DataTypes.INTEGER,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 }, {});
 
 Album.associate = (models) => {
   Album.belongsToMany(models.Artist, {
     through: models.AlbumArtist,
-    as: "artists",
-    foreignKey: "albumId",
+    as: 'artists',
+    foreignKey: 'albumId',
   });
-}
-
+};
 
 module.exports = Album;

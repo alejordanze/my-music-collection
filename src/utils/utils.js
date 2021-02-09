@@ -13,7 +13,7 @@ const Util = {
     this.type = 'success';
   },
 
-  setError: (statusCode, {message}) => {
+  setError: (statusCode, { message }) => {
     this.statusCode = statusCode;
     this.message = message;
     this.type = 'error';
@@ -33,7 +33,7 @@ const Util = {
       status: this.type,
       message: this.message,
     });
-  }
-}
+  },
+};
 
 module.exports = Util;

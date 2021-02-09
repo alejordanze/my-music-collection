@@ -408,18 +408,22 @@
                     "uniqueItems": true
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Tusa"
                 },
                 "releaseDate": {
                     "type": "string",
-                    "format": "date"
+                    "format": "date",
+                    "example": "1980-12-25"
                 },
                 "rating": {
                     "type": "number",
-                    "format": "float"
+                    "format": "float",
+                    "example": "78.5"
                 },
                 "year": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": "1923"
                 }
             }
         },
@@ -438,14 +442,17 @@
                     "uniqueItems": true
                 },
                 "firstName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Freddie"
                 },
                 "lastName": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Mercury"
                 },
                 "birthDate": {
                     "type": "string",
-                    "format": "date"
+                    "format": "date",
+                    "example": "1963-11-23"
                 }
             }
         },
